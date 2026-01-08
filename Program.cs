@@ -1,21 +1,28 @@
-﻿/* Math Game Requirements
-- You need to create a game that consists of asking the player what's the result of a math question
+﻿/* --Math Game Requirements--
+1) You need to create a game that consists of asking the player what's the result of a math question
  (i.e. 9 x 9 = ?), collecting the input and adding a point in case of a correct answer.
 
-- A game needs to have at least 5 questions.
+2) A game needs to have at least 5 questions.
 
--The divisions should result on INTEGERS ONLY and dividends should go from 0 to 100. Example: Your app shouldn't present the division 7/2 to the user, 
+3) The divisions should result on INTEGERS ONLY and dividends should go from 0 to 100. Example: Your app shouldn't present the division 7/2 to the user, 
  since it doesn't result in an integer.
 
-- Users should be presented with a menu to choose an operation.
+4) Users should be presented with a menu to choose an operation.
 
-- You should record previous games in a List and there should be an option in the 
+5) You should record previous games in a List and there should be an option in the 
   menu for the user to visualize a history of previous games.
 
-- You don't need to record results on a database. 
+6) You don't need to record results on a database. 
   Once the program is closed the results will be deleted.*/
 
-Console.WriteLine("Choose an option:\n1) Addition Math Questions\n2) Subtraction Math Questions\n3) Multiplication Math Questions\n4) Division Math Questions\n5) Game History\n6) Exit\n");
+
+/*  -- Extra Credit Challenges --
+1) Try to implement levels of difficulty.
+2) Add a timer to track how long the user takes to finish the game.
+3) Create a Random Game option where the players will be presented with questions from random operations.
+*/
+
+Console.WriteLine("Choose an option:\n1) Addition Math Questions\n2) Subtraction Math Questions\n3) Multiplication Math Questions\n4) Division Math Questions\n5) Random Operator Math Questions\n6) Game History\n7) Exit");
 Menu();
 
 //--Methods--
@@ -46,10 +53,14 @@ void Menu()
         break;
 
     case 5:
-        Console.WriteLine("Option 5 will be here - Game History");
+        Console.WriteLine("Option 5 will be here - Random Operator Mode");
         break;
 
     case 6:
+        Console.WriteLine("Option 5 will be here - Game History");
+        break;
+
+    case 7:
         Console.WriteLine("Goodbye :)");
         break;
 
