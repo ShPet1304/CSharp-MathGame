@@ -15,4 +15,56 @@
 - You don't need to record results on a database. 
   Once the program is closed the results will be deleted.*/
 
+Console.WriteLine("Choose an option:\n1) Addition Math Questions\n2) Subtraction Math Questions\n3) Multiplication Math Questions\n4) Division Math Questions\n5) Game History\n6) Exit\n");
+Menu();
 
+//--Methods--
+
+void Menu()
+{ string? menuSelection = Console.ReadLine();
+  
+  if (menuSelection != null)
+    {
+      int.TryParse(menuSelection, out int choice);
+
+    switch (choice)
+  {
+    case 1:
+        Console.WriteLine("Option 1 will be here - for addition");
+        break;
+
+    case 2:
+        Console.WriteLine("Option 2 will be here - for subtraction");
+        break;
+
+    case 3:
+        Console.WriteLine("Option 3 will be here - for multiplication");
+        break;
+
+    case 4:
+        Console.WriteLine("Option 4 will be here - for Division");
+        break;
+
+    case 5:
+        Console.WriteLine("Option 5 will be here - Game History");
+        break;
+
+    case 6:
+        Console.WriteLine("Goodbye :)");
+        break;
+
+    default:
+        Console.WriteLine("Enter a number option");
+        Menu();
+        break;
+    
+    
+  }
+    }
+}
+
+//void GameRecord(){}
+
+// void PlayGame(){}
+
+// void PlayRound(){}
