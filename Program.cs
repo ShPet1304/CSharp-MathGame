@@ -19,7 +19,7 @@
 /*  -- Extra Credit Challenges --
 1) Try to implement levels of difficulty.
 2) Add a timer to track how long the user takes to finish the game.
-3) Create a Random Game option where the players will be presented with questions from random operations.
+3) Create a Random Game option where the players will be presented with questions from random operations. - Done
 */
 
 // **Global Variables**
@@ -76,7 +76,29 @@ void Menu()
         break;
 
     case 5:
-        Console.WriteLine("Option 5 will be here - Random Operator Mode");
+        Random option = new Random();
+       Console.WriteLine("Random Operator Math Game:");
+        for(int i = 0; i < maxRounds; i++){
+          int randomOperation = option.Next(1,5);
+          switch (randomOperation)
+          {
+            case 1:
+                PlayRound("addition");
+                break;
+            case 2:
+                PlayRound("subtraction");
+                break;
+            case 3:
+                PlayRound("multiplication");
+                break;
+            case 4:
+                PlayRound("division");
+                break;
+
+          }         
+        }
+        Console.WriteLine($"Game Over\nYour Final score is: {userScore}/5");
+        userScore = 0;
         break;
 
     case 6:
