@@ -1,5 +1,4 @@
-﻿
-// **Global Variables**
+﻿// **Global Variables**
 Random numbers = new Random();
 int leftHandOperand = numbers.Next(1, 101);
 int rightHandOperand = numbers.Next(1,101);
@@ -93,7 +92,6 @@ void Menu( int choice = default)
     case 7:
         gameRunning = false;
         Console.WriteLine("Goodbye :)");
-        
         break;
 
     default:
