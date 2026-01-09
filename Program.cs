@@ -37,19 +37,21 @@ void Menu()
     switch (choice)
   {
     case 1:
-        Console.WriteLine("Option 1 will be here - for addition");
+        Console.WriteLine("Addition Math Game:");
+        PlayRound("addition");
         break;
 
     case 2:
-        Console.WriteLine("Option 2 will be here - for subtraction");
+        Console.WriteLine("Subtraction Math Game:");
+        PlayRound("subtraction");
         break;
 
     case 3:
-        Console.WriteLine("Option 3 will be here - for multiplication");
+        PlayRound("multiplication");
         break;
 
     case 4:
-        Console.WriteLine("Option 4 will be here - for Division");
+        PlayRound("division");
         break;
 
     case 5:
@@ -73,9 +75,96 @@ void Menu()
   }
     }
 }
+void PlayRound(string GameOption)
+{
+  Random numbers = new Random();
+  int leftHandOperand = numbers.Next(1, 101);
+  int rightHandOperand = numbers.Next(1,101);
+  int answer;
+  string? userAnswer;
+  int newUserAnswer;
+
+  switch(GameOption){
+
+    case "addition" :
+      answer = leftHandOperand + rightHandOperand;
+      Console.WriteLine( $"{leftHandOperand} + {rightHandOperand} = ??" );
+      userAnswer = Console.ReadLine();
+      int.TryParse(userAnswer, out newUserAnswer);
+      if (newUserAnswer == answer)
+      {
+        Console.WriteLine($"Correct {leftHandOperand} + {rightHandOperand} = {answer}");
+      }
+
+      else Console.WriteLine($"Wrong. The Answer is {answer}");
+
+    break;
+
+    case "subtraction" :
+    if (rightHandOperand > leftHandOperand)
+    {
+      (leftHandOperand, rightHandOperand) = (rightHandOperand, leftHandOperand);
+    }
+      answer = leftHandOperand - rightHandOperand;
+      Console.WriteLine( $"{leftHandOperand} - {rightHandOperand} = ??" );
+      userAnswer = Console.ReadLine();
+      int.TryParse(userAnswer, out newUserAnswer);
+      if (newUserAnswer == answer)
+      {
+        Console.WriteLine($"Correct {leftHandOperand} - {rightHandOperand} = {answer}");
+      }
+
+      else Console.WriteLine($"Wrong. The Answer is {answer}");
+
+
+    break;
+
+    case "multiplication" :
+      int multiplyLeftHandOperands = numbers.Next(1, 101);
+      int multiplyRightHandOperands = numbers.Next(1, 101);
+      answer = multiplyLeftHandOperands * multiplyRightHandOperands;
+      Console.WriteLine( $"{multiplyLeftHandOperands} * {multiplyRightHandOperands} = ??" );
+      userAnswer = Console.ReadLine();
+      int.TryParse(userAnswer, out newUserAnswer);
+      if (newUserAnswer == answer)
+      {
+        Console.WriteLine($"Correct {multiplyLeftHandOperands} * {multiplyRightHandOperands} = {answer}");
+      }
+
+      else Console.WriteLine($"Wrong. The Answer is {answer}");
+
+    break;
+
+    case "division" :
+    int dividend;
+    int divisor; 
+    
+    
+    do{
+    dividend = numbers.Next(1, 101);
+    divisor = numbers.Next(1, 101);
+    
+    } while(dividend % divisor != 0 || dividend < divisor);
+    
+     answer = dividend / divisor;
+    
+      Console.WriteLine( $"{dividend} / {divisor} = ??" );
+      userAnswer = Console.ReadLine();
+      int.TryParse(userAnswer, out newUserAnswer);
+      if (newUserAnswer == answer)
+      {
+        Console.WriteLine($"Correct {dividend} / {divisor} = {answer}");
+      }
+
+      else Console.WriteLine($"Wrong. The Answer is {answer}");
+
+
+    break;
+  }
+}
 
 //void GameRecord(){}
 
 // void PlayGame(){}
 
-// void PlayRound(){}
+
