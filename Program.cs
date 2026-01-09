@@ -1,13 +1,13 @@
 ﻿/* --Math Game Requirements--
 1) You need to create a game that consists of asking the player what's the result of a math question
- (i.e. 9 x 9 = ?), collecting the input and adding a point in case of a correct answer.
+ (i.e. 9 x 9 = ?), collecting the input and adding a point in case of a correct answer. - Done
 
-2) A game needs to have at least 5 questions.
+2) A game needs to have at least 5 questions. - Done
 
 3) The divisions should result on INTEGERS ONLY and dividends should go from 0 to 100. Example: Your app shouldn't present the division 7/2 to the user, 
- since it doesn't result in an integer.
+ since it doesn't result in an integer. - Done
 
-4) Users should be presented with a menu to choose an operation.
+4) Users should be presented with a menu to choose an operation. - Done
 
 5) You should record previous games in a List and there should be an option in the 
   menu for the user to visualize a history of previous games.
@@ -21,6 +21,11 @@
 2) Add a timer to track how long the user takes to finish the game.
 3) Create a Random Game option where the players will be presented with questions from random operations.
 */
+
+// **Global Variables**
+int userScore = 0;
+int maxRounds = 5;
+
 
 Console.WriteLine("Choose an option:\n1) Addition Math Questions\n2) Subtraction Math Questions\n3) Multiplication Math Questions\n4) Division Math Questions\n5) Random Operator Math Questions\n6) Game History\n7) Exit");
 Menu();
@@ -38,20 +43,36 @@ void Menu()
   {
     case 1:
         Console.WriteLine("Addition Math Game:");
-        PlayRound("addition");
+        for(int i = 0; i < maxRounds; i++){
+          PlayRound("addition");
+        }
+        Console.WriteLine($"Game Over\nYour Final score is: {userScore}/5");
+        userScore = 0;
         break;
 
     case 2:
         Console.WriteLine("Subtraction Math Game:");
-        PlayRound("subtraction");
+        for(int i = 0; i < maxRounds; i++){
+          PlayRound("subtraction");
+        }
+        Console.WriteLine($"Game Over\nYour Final score is: {userScore}/5");
+        userScore = 0;
         break;
 
     case 3:
-        PlayRound("multiplication");
+        for(int i = 0; i < maxRounds; i++){
+          PlayRound("multiplication");
+        }
+        Console.WriteLine($"Game Over\nYour Final score is: {userScore}/5");
+        userScore = 0;
         break;
 
     case 4:
-        PlayRound("division");
+        for(int i = 0; i < maxRounds; i++){
+          PlayRound("division");
+        }
+        Console.WriteLine($"Game Over\nYour Final score is: {userScore}/5");
+        userScore = 0;
         break;
 
     case 5:
@@ -59,7 +80,7 @@ void Menu()
         break;
 
     case 6:
-        Console.WriteLine("Option 5 will be here - Game History");
+        Console.WriteLine("Option 6 will be here - Game History");
         break;
 
     case 7:
@@ -93,6 +114,7 @@ void PlayRound(string GameOption)
       int.TryParse(userAnswer, out newUserAnswer);
       if (newUserAnswer == answer)
       {
+        userScore += 1;
         Console.WriteLine($"Correct {leftHandOperand} + {rightHandOperand} = {answer}");
       }
 
@@ -111,6 +133,7 @@ void PlayRound(string GameOption)
       int.TryParse(userAnswer, out newUserAnswer);
       if (newUserAnswer == answer)
       {
+        userScore += 1;
         Console.WriteLine($"Correct {leftHandOperand} - {rightHandOperand} = {answer}");
       }
 
@@ -128,6 +151,7 @@ void PlayRound(string GameOption)
       int.TryParse(userAnswer, out newUserAnswer);
       if (newUserAnswer == answer)
       {
+        userScore += 1;
         Console.WriteLine($"Correct {multiplyLeftHandOperands} * {multiplyRightHandOperands} = {answer}");
       }
 
@@ -153,6 +177,7 @@ void PlayRound(string GameOption)
       int.TryParse(userAnswer, out newUserAnswer);
       if (newUserAnswer == answer)
       {
+        userScore += 1;
         Console.WriteLine($"Correct {dividend} / {divisor} = {answer}");
       }
 
