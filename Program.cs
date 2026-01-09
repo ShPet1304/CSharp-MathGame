@@ -45,7 +45,7 @@ Menu();
 
 //--Methods--
 
-void Menu()
+void Menu( int choice = default)
 { 
   Console.WriteLine("Choose an option:\n1) Addition Math Questions\n2) Subtraction Math Questions\n3) Multiplication Math Questions\n4) Division Math Questions\n5) Random Operator Math Questions\n6) Game History\n7) Exit");
   
@@ -53,11 +53,111 @@ void Menu()
   
   if (menuSelection != null)
     {
-      int.TryParse(menuSelection, out int choice);
+      int.TryParse(menuSelection, out choice);
 
     switch (choice)
   {
     case 1:
+        GameMode("addition");
+        break;
+
+    case 2:
+        GameMode("subtraction");
+       
+        break;
+
+    case 3:
+       GameMode("multiplication");
+       
+        break;
+
+    case 4:
+      GameMode("division");
+       
+        break;
+
+    case 5:
+      Console.Clear();
+         Random option = new Random();
+       Console.WriteLine("Random Math Game:");
+        for(int i = 0; i < maxRounds; i++){
+          int randomOperation = option.Next(1,5);
+          switch (randomOperation)
+          {
+          case 1:
+            GameMode("addition");
+            break;
+
+          case 2:
+            GameMode("subtraction");
+            break;
+
+          case 3:
+            GameMode("multiplication");
+            break;
+
+          case 4:
+            GameMode("division");
+            break;
+
+          default:
+            ReturnToMenu();
+            break;
+          }
+        }
+        break;
+
+    case 6:
+        GameRecords();
+        ReturnToMenu();
+        break;
+
+    case 7:
+        gameRunning = false;
+        Console.WriteLine("Goodbye :)");
+        
+        break;
+
+    default:
+        Console.WriteLine("Enter a number option");
+        ReturnToMenu();
+        break;
+    
+    
+  }
+    }
+}
+void ReturnToMenu()
+{ 
+  Console.WriteLine("Press Enter to return to the Main Menu.");
+  Console.ReadLine();
+  Console.Clear();
+  Console.Write("\x1b[3J");
+  Console.Clear();
+  Menu();
+}
+
+
+
+
+void GameRecords()
+{ 
+  Console.WriteLine("\n\tHistory Table:\n");
+  Console.WriteLine("Problem\t\tAnswer\t\tResult");
+  foreach (object[] game in gameHistory)
+{
+    Console.WriteLine($"{game[0]}\t\t{game[1]}\t\t{game[2]}");
+}
+Console.WriteLine();
+
+}
+
+
+void GameMode(string mode)
+{
+  switch(mode){
+
+  case "addition":
         Console.WriteLine("Addition Math Game:");
         for(int i = 0; i < maxRounds; i++){
 
@@ -94,7 +194,7 @@ void Menu()
         userScore = 0;
         break;
 
-    case 2:
+    case "subtraction":
         Console.WriteLine("Subtraction Math Game:");
         for(int i = 0; i < maxRounds; i++){
 
@@ -136,7 +236,7 @@ void Menu()
        
         break;
 
-    case 3:
+    case "multiplication":
        
         for(int i = 0; i < maxRounds; i++)
         {
@@ -167,10 +267,11 @@ void Menu()
         
     
         Console.WriteLine($"Game Over\nYour Final score is: {userScore}/5");
+        ReturnToMenu();
         userScore = 0;
         break;
 
-    case 4:
+    case "division":
       
         for(int i = 0; i < maxRounds; i++)
       {
@@ -210,111 +311,11 @@ void Menu()
           
 
         Console.WriteLine($"Game Over\nYour Final score is: {userScore}/5");
+        ReturnToMenu();
         userScore = 0;
         break;
 
-    case 5:
-      Console.Clear();
-        Random option = new Random();
-       Console.WriteLine("Random Operator Math Game:");
-        for(int i = 0; i < maxRounds; i++){
-          int randomOperation = option.Next(1,5);
-          switch (randomOperation)
-          {
-            case 1:
-                PlayRound("addition");
-                break;
-            case 2:
-                PlayRound("subtraction");
-                break;
-            case 3:
-                PlayRound("multiplication");
-                break;
-            case 4:
-                PlayRound("division");
-                break;
-
-          }         
+  }
         }
-        Console.WriteLine($"Game Over\nYour Final score is: {userScore}/5");
-        userScore = 0;
-        break;
-
-    case 6:
-        GameRecords();
-        ReturnToMenu();
-        break;
-
-    case 7:
-        gameRunning = false;
-        Console.WriteLine("Goodbye :)");
-        
-        break;
-
-    default:
-        Console.WriteLine("Enter a number option");
-        ReturnToMenu();
-        break;
-    
-    
-  }
-    }
-}
-void ReturnToMenu()
-{ 
-  Console.WriteLine("Press Enter to return to the Main Menu.");
-  Console.ReadLine();
-  Console.Clear();
-  Console.Write("\x1b[3J");
-  Console.Clear();
-  Menu();
-}
-
-
-
-
-
-void PlayRound(string GameOption)
-{
-
-
-  switch(GameOption){
-
-    case "addition" :
-      
-
-    break;
-
-    case "subtraction" :
-    
-
-
-    break;
-
-    case "multiplication" :
-      
-
-    break;
-
-    case "division" :
-    
-
-
-    break;
-  }
-}
-
-void GameRecords()
-{ 
-  Console.WriteLine("\n\tHistory Table:\n");
-  Console.WriteLine("Problem\t\tAnswer\t\tResult");
-  foreach (object[] game in gameHistory)
-{
-    Console.WriteLine($"{game[0]}\t\t{game[1]}\t\t{game[2]}");
-}
-Console.WriteLine();
-
-}
-
-
+  
 
