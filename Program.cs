@@ -1,27 +1,4 @@
-﻿/* --Math Game Requirements--
-1) You need to create a game that consists of asking the player what's the result of a math question
- (i.e. 9 x 9 = ?), collecting the input and adding a point in case of a correct answer. - Done
-
-2) A game needs to have at least 5 questions. - Done
-
-3) The divisions should result on INTEGERS ONLY and dividends should go from 0 to 100. Example: Your app shouldn't present the division 7/2 to the user, 
- since it doesn't result in an integer. - Done
-
-4) Users should be presented with a menu to choose an operation. - Done
-
-5) You should record previous games in a List and there should be an option in the 
-  menu for the user to visualize a history of previous games.
-
-6) You don't need to record results on a database. 
-  Once the program is closed the results will be deleted.*/
-
-
-/*  -- Extra Credit Challenges --
-1) Try to implement levels of difficulty.
-2) Add a timer to track how long the user takes to finish the game.
-3) Create a Random Game option where the players will be presented with questions from random operations. - Done
-*/
-
+﻿
 // **Global Variables**
 Random numbers = new Random();
 int leftHandOperand = numbers.Next(1, 101);
@@ -37,11 +14,12 @@ List<object[]> gameHistory = new List<object[]>();
 
   
 
-
+//--Initialize Game--
 while (gameRunning)
 {
 Menu();
 }
+
 
 //--Methods--
 
@@ -127,31 +105,6 @@ void Menu( int choice = default)
   }
     }
 }
-void ReturnToMenu()
-{ 
-  Console.WriteLine("Press Enter to return to the Main Menu.");
-  Console.ReadLine();
-  Console.Clear();
-  Console.Write("\x1b[3J");
-  Console.Clear();
-  Menu();
-}
-
-
-
-
-void GameRecords()
-{ 
-  Console.WriteLine("\n\tHistory Table:\n");
-  Console.WriteLine("Problem\t\tAnswer\t\tResult");
-  foreach (object[] game in gameHistory)
-{
-    Console.WriteLine($"{game[0]}\t\t{game[1]}\t\t{game[2]}");
-}
-Console.WriteLine();
-
-}
-
 
 void GameMode(string mode)
 {
@@ -314,8 +267,31 @@ void GameMode(string mode)
         ReturnToMenu();
         userScore = 0;
         break;
-
   }
         }
   
 
+void ReturnToMenu()
+{ 
+  Console.WriteLine("Press Enter to return to the Main Menu.");
+  Console.ReadLine();
+  Console.Clear();
+  Console.Write("\x1b[3J");
+  Console.Clear();
+  Menu();
+}
+
+
+
+
+void GameRecords()
+{ 
+  Console.WriteLine("\n\tHistory Table:\n");
+  Console.WriteLine("Problem\t\tAnswer\t\tResult");
+  foreach (object[] game in gameHistory)
+{
+    Console.WriteLine($"{game[0]}\t\t{game[1]}\t\t{game[2]}");
+}
+Console.WriteLine();
+
+}
